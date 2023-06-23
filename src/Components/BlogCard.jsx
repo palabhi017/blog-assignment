@@ -36,9 +36,16 @@ const handleFav=()=>{
         localStorage.setItem("blogsIDs",JSON.stringify(favBlogsIDs))
         setToggle(!toggle)
     }
-   
-   
 }
+   const handleRemove =()=>{
+    favBlogs = favBlogs.filter((e)=> e.id !== id)
+    favBlogsIDs = favBlogs.filter((e)=> e !== id)
+    localStorage.setItem("blogs",JSON.stringify(favBlogs))
+    localStorage.setItem("blogsIDs",JSON.stringify(favBlogsIDs))
+    setToggle(!toggle)
+
+   }
+   
   return (
     <>
       <VStack
@@ -64,7 +71,7 @@ const handleFav=()=>{
         <HStack w="100%" justifyContent={"space-between"}>
          <Button bgColor="blue.400" color="white" onClick={()=> handleComment(id)}>Comments</Button>
          <Button  bgColor="tomato" color="white" w="50%" align="right" _hover={{color:"tomato",bgColor:"red.100"}}>READ MORE</Button>
-       {removeBTN?  <Button  bgColor="tomato" color="white" w="20%" align="right" _hover={{color:"tomato",bgColor:"red.100"}}>REMOVE</Button>:""}
+       {removeBTN?  <Button  bgColor="tomato" color="white" w="20%" align="right" _hover={{color:"tomato",bgColor:"red.100"}} onClick={handleRemove}>REMOVE</Button>:""}
         </HStack>
       </VStack>
     </>
