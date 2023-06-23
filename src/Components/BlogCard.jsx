@@ -12,8 +12,12 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { AiOutlineHeart,AiFillHeart } from "react-icons/ai";
-const BlogCard = ({blogData,handleComment,removeBTN}) => {
-    const {id,title,body} = blogData
+import { Link } from "react-router-dom";
+
+
+const BlogCard = ({blogData,handleComment,removeBTN,triger}) => {
+
+    const {userId,id,title,body} = blogData
     const [toggle,setToggle] = useState(false)
 const toast = useToast()
 let favBlogs = JSON.parse(localStorage.getItem("blogs"))||[]
@@ -30,7 +34,7 @@ const handleFav=()=>{
             isClosable: true,
           })
     }else{
-        favBlogs.push({id,title,body})
+        favBlogs.push({userId,id,title,body})
         favBlogsIDs.push(id)
         localStorage.setItem("blogs",JSON.stringify(favBlogs))
         localStorage.setItem("blogsIDs",JSON.stringify(favBlogsIDs))
@@ -43,7 +47,11 @@ const handleFav=()=>{
     localStorage.setItem("blogs",JSON.stringify(favBlogs))
     localStorage.setItem("blogsIDs",JSON.stringify(favBlogsIDs))
     setToggle(!toggle)
+    triger()
+   }
 
+   const sendData=()=>{
+     localStorage.setItem("blogdata",JSON.stringify({title,body}))
    }
    
   return (
@@ -70,7 +78,7 @@ const handleFav=()=>{
         <Text fontSize={"2em"} noOfLines={2}>{body}</Text>
         <HStack w="100%" justifyContent={"space-between"}>
          <Button bgColor="blue.400" color="white" onClick={()=> handleComment(id)}>Comments</Button>
-         <Button  bgColor="tomato" color="white" w="50%" align="right" _hover={{color:"tomato",bgColor:"red.100"}}>READ MORE</Button>
+        <Link style={{width:"50%"}} to={`/${userId}`}> <Button  bgColor="tomato" color="white" w="100%" align="right" _hover={{color:"tomato",bgColor:"red.100"}} onClick={sendData}>READ MORE</Button></Link>
        {removeBTN?  <Button  bgColor="tomato" color="white" w="20%" align="right" _hover={{color:"tomato",bgColor:"red.100"}} onClick={handleRemove}>REMOVE</Button>:""}
         </HStack>
       </VStack>

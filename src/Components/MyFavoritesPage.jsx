@@ -6,6 +6,7 @@ import Comment from './Comment'
 
 const MyFavoritesPage = () => {
     const [activePage,setActivePage] = useState(1)
+    const [triger,setTriger] = useState(false)
     const [allComments,setAllComments] = useState([])
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -28,8 +29,8 @@ const MyFavoritesPage = () => {
   return (
    <>
    <Heading textAlign={"center"} color={"red.400"}>MY FAVORITES</Heading>
-   <VStack gap={8} m="auto" w="50vw" mt="30px">
-    {allFavBlogs.length>0 && allFavBlogs.filter((e,i)=> i+1>=(activePage-1)*10+1 && i+1<=(activePage)*10).map((e)=> <BlogCard key={e.id} blogData={e} handleComment={(id)=> handleComments(id)} removeBTN={true}/>)}
+   <VStack gap={8} m="auto" w={{base:"98vw",md:'95vw',lg:"50vw"}} mt="30px">
+    {allFavBlogs.length>0 && allFavBlogs.filter((e,i)=> i+1>=(activePage-1)*10+1 && i+1<=(activePage)*10).map((e)=> <BlogCard key={e.id} blogData={e} handleComment={(id)=> handleComments(id)} removeBTN={true} triger={()=> setTriger(!triger)}/>)}
     </VStack>
     <Drawer placement={"right"} size={"sm"} onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />

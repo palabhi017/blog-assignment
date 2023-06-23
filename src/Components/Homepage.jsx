@@ -49,14 +49,14 @@ const Homepage = () => {
    
   return (
     <>
-    <Heading>ALL Blogs</Heading>
-    <VStack gap={8} m="auto" w="50vw">
+    <Heading textAlign={"center"} color="blue.300">All Blogs</Heading>
+    <VStack gap={8} m="auto" w={{base:"98vw",md:'95vw',lg:"50vw"}} mt="3vh">
     {allBlogs.length>0 && allBlogs.filter((e,i)=> i+1>=(activePage-1)*10+1 && i+1<=(activePage)*10).map((e)=> <BlogCard key={e.id} blogData={e} handleComment={(id)=> handleComments(id)} removeBTN={false}/>)}
     </VStack>
-    <HStack w="40vh" h="auto" m="auto" mt="30px">
+    <HStack w={{base:"80vw",md:'95vw',lg:"40vw"}} h="auto" m="auto" gap={{base:"2px",md:'3px',lg:"5px"}} mt="30px">
     {page.length>0 && page.map((e,i)=>  <Pagination key={i} page={i+1} handlePage={(val)=> setActivePage(val)} active={activePage}/>)}
     </HStack>
-    <Drawer placement={"right"} size={"sm"} onClose={onClose} isOpen={isOpen}>
+    <Drawer placement={"right"}  onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader borderBottomWidth='1px'>All Comments</DrawerHeader>
