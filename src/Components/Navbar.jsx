@@ -1,14 +1,17 @@
 import { Box, Button, HStack, Icon, Input, Show, Text, VStack } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import { Link } from 'react-router-dom'
 import {AiFillHeart } from "react-icons/ai";
 import axios from 'axios';
 import SearchCard from './SearchCard';
 
+// This is navbar of our web app.
 const Navbar = () => {
   const [searchInput,setSearchInput] = useState("")
   const [allBlogs,setAllBlogs] = useState([])
 
+
+// This function is getting all the post and filtering the post based on the user input.
   const getAllBlogs = async()=>{
     try {
         let res = await axios.get(`https://jsonplaceholder.typicode.com/posts`)
@@ -20,6 +23,8 @@ const Navbar = () => {
     }
     
 }
+
+// This function will run when user will type something and will also call getAllBlog function.
 const handleChange=(e)=>{
   setSearchInput(e.target.value)
   getAllBlogs()
@@ -42,6 +47,8 @@ const handleChange=(e)=>{
        </HStack>
        </Show>
    </HStack>
+
+   {/* here i am maping all the searchCard */}
       <VStack zIndex={1} position={"fixed"} maxH="50vh" display={searchInput.length>0? "block":"none"} overflow={"auto"} w={{base:"80vw",md:"50vw",lg:"30vw"}} ml={{base:"10vw",md:"50vw",lg:"45vw"}} bgColor={"white"} p="5px 10px">
        {allBlogs.length>0 && allBlogs.map((e)=> <SearchCard data={e} reset={()=> setSearchInput("")}/>)}
        {searchInput.length>0 && allBlogs.length===0 && <Text fontWeight={"bold"} fontSize={"1.2em"}>NO RESULT FOUND</Text>}
