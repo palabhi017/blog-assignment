@@ -1,4 +1,4 @@
-import { Avatar, Box, HStack, Text } from '@chakra-ui/react'
+import { Avatar, HStack, Text } from '@chakra-ui/react'
 import React from 'react'
 
 // This components is containing layout for each comment.

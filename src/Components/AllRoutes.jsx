@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Homepage from "./Homepage";
-import MyFavoritesPage from "./MyFavoritesPage";
-import SingleBlogPage from "./SingleBlogPage";
+import Homepage from "../Pages/Homepage";
+import MyFavoritesPage from "../Pages/MyFavoritesPage";
+import SingleBlogPage from "../Pages/SingleBlogPage";
 
 // This All routes component is created to navigate between components.
 // using react-router-dom for this.
