@@ -1,9 +1,9 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import BlogCard from './BlogCard'
+import BlogCard from '../Components/BlogCard'
 import {  Box, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, HStack, Heading, Icon, Spinner, Text, VStack, useDisclosure } from '@chakra-ui/react'
-import Pagination from './Pagination'
-import Comment from './Comment'
+import Pagination from '../Components/Pagination'
+import Comment from '../Components/Comment'
 import { BiUpArrowAlt } from "react-icons/bi";
 
 // This component is homepage of our web application.

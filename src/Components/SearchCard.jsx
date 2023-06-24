@@ -2,6 +2,7 @@ import { Avatar, Box, HStack } from '@chakra-ui/react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+// This component is creating each search card.
 const SearchCard = ({data,reset}) => {
     const {title,userId} = data
   return (

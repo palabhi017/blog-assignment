@@ -1,8 +1,8 @@
 import { VStack,Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, useDisclosure, Heading } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import BlogCard from './BlogCard'
+import BlogCard from '../Components/BlogCard'
 import axios from 'axios'
-import Comment from './Comment'
+import Comment from '../Components/Comment'
 
 // this component is to show favorite blogs.
 const MyFavoritesPage = () => {

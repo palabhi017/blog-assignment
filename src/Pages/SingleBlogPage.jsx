@@ -3,11 +3,14 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
+// In this component I am getting id from params and fetching userdata accoring it.
+
 const SingleBlogPage = () => {
     const {userId} = useParams()
     const [userData,setUserData] = useState({})
     let getBlogData= JSON.parse(localStorage.getItem("blogdata"))||{}
-console.log(userId)
+
+    // this function is fetching all user data.
     const getuserData= async()=>{
         try {
             let res = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`)
