@@ -26,7 +26,7 @@ const handleChange=(e)=>{
 }
   return (
    <>
-   <HStack h="10vh" w="98vw" bgColor={"#10b3ff"} m="auto" p="0px 3vw" justifyContent={"space-between"}>
+   <HStack h="10vh" w="98vw" zIndex={1} bgColor={"#10b3ff"} m="auto" p="0px 3vw" pos={"sticky"} top="0" justifyContent={"space-between"}>
       <Link to="/"><Box fontSize={"2em"} fontWeight={"bold"}>Blog<Text as={"span"} color="yellow.100">Shlog</Text></Box></Link>
        <Show above='850px'>
        <HStack w="50%" justifyContent={"space-between"}>
@@ -42,8 +42,9 @@ const handleChange=(e)=>{
        </HStack>
        </Show>
    </HStack>
-      <VStack zIndex={1} position={"absolute"} h="50vh" display={searchInput.length>0? "block":"none"} overflow={"auto"} w={{base:"50vw",md:"50vw",lg:"25vw"}} ml={{base:"40vw",md:"50vw",lg:"50vw"}} bgColor={"white"}>
+      <VStack zIndex={1} position={"fixed"} maxH="50vh" display={searchInput.length>0? "block":"none"} overflow={"auto"} w={{base:"80vw",md:"50vw",lg:"30vw"}} ml={{base:"10vw",md:"50vw",lg:"45vw"}} bgColor={"white"} p="5px 10px">
        {allBlogs.length>0 && allBlogs.map((e)=> <SearchCard data={e} reset={()=> setSearchInput("")}/>)}
+       {searchInput.length>0 && allBlogs.length===0 && <Text fontWeight={"bold"} fontSize={"1.2em"}>NO RESULT FOUND</Text>}
        </VStack>
    </>
   )

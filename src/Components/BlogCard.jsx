@@ -6,6 +6,7 @@ import {
   HStack,
   Heading,
   Icon,
+  Image,
   Text,
   VStack,
   useToast,
@@ -60,7 +61,9 @@ const handleFav=()=>{
         h={"auto"}
         w={"100%"}
         p="30px"
+        
         m="auto"
+        bgColor={"white"}
         borderRadius={"15px"}
         boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px"
       >
@@ -73,8 +76,9 @@ const handleFav=()=>{
           </Box>
         </HStack>
 
-        <Heading fontSize={"2.5em"}>{title}</Heading>
+        <Heading fontSize={"2em"}>{title}</Heading>
         <Divider  />
+        <Image h="40vh" w="100%" src="https://i.pinimg.com/originals/4b/c3/83/4bc38348a51f5b870566e434275753eb.jpg"></Image>
         <Text fontSize={"2em"} noOfLines={2}>{body}</Text>
         <HStack w="100%" justifyContent={"space-between"}>
          <Button bgColor="blue.400" color="white" onClick={()=> handleComment(id)}>Comments</Button>
