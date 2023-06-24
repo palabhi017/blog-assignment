@@ -48,6 +48,14 @@ const handleFav=()=>{
         localStorage.setItem("blogs",JSON.stringify(favBlogs))
         localStorage.setItem("blogsIDs",JSON.stringify(favBlogsIDs))
         setToggle(!toggle)
+        toast({
+          title: 'Message',
+          position:'top',
+          description: "Blog Added in the Favorite List",
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+        })
     }
 }
 
@@ -60,6 +68,14 @@ const handleFav=()=>{
     localStorage.setItem("blogsIDs",JSON.stringify(favBlogsIDs))
     setToggle(!toggle)
     triger()
+    toast({
+      title: 'Message',
+      position:'top',
+      description: "Blog removed form the Favorite List",
+      status: 'error',
+      duration: 3000,
+      isClosable: true,
+    })
    }
 
    // This function is sending data to single blog page.
