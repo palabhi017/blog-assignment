@@ -4,13 +4,16 @@ import BlogCard from './BlogCard'
 import axios from 'axios'
 import Comment from './Comment'
 
+// this component is to show favorite blogs.
 const MyFavoritesPage = () => {
-    const [activePage,setActivePage] = useState(1)
+  
     const [triger,setTriger] = useState(false)
     const [allComments,setAllComments] = useState([])
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     let allFavBlogs= JSON.parse(localStorage.getItem("blogs"))||[]
+
+  // this function is fetcing user data.
     const getComments = async(id)=>{
         try {
             let res = await axios.get(`https://jsonplaceholder.typicode.com/comments?postId=${id}`)
@@ -21,6 +24,8 @@ const MyFavoritesPage = () => {
         }
         
     }
+    
+// this function is used to call getcomment function and also to open side drawer.
 
     const handleComments=(id)=>{
         getComments(id)
@@ -30,8 +35,11 @@ const MyFavoritesPage = () => {
    <>
    <Heading textAlign={"center"} color={"red.400"}>MY FAVORITES</Heading>
    <VStack gap={8} m="auto" w={{base:"98vw",md:'95vw',lg:"50vw"}} mt="30px">
-    {allFavBlogs.length>0 && allFavBlogs.filter((e,i)=> i+1>=(activePage-1)*10+1 && i+1<=(activePage)*10).map((e)=> <BlogCard key={e.id} blogData={e} handleComment={(id)=> handleComments(id)} removeBTN={true} triger={()=> setTriger(!triger)}/>)}
+    {allFavBlogs.length>0 && allFavBlogs.map((e)=> <BlogCard key={e.id} blogData={e} handleComment={(id)=> handleComments(id)} removeBTN={true} triger={()=> setTriger(!triger)}/>)}
     </VStack>
+
+    {/*  this is a drawer. it is showing all comments */}
+
     <Drawer placement={"right"} size={"sm"} onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>

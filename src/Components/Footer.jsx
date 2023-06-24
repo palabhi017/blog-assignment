@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { FaTwitter, FaYoutube, FaInstagram } from 'react-icons/fa';
 
-
+// This is the footer of our web application.
 
 const ListHeader = ({ children }) => {
   return (

@@ -1,6 +1,9 @@
 import { Avatar, Box, HStack, Text } from '@chakra-ui/react'
 import React from 'react'
 
+// This components is containing layout for each comment.
+// maping this component on homepage with dynamic data.
+
 const Comment = ({body}) => {
   return (
     <>
