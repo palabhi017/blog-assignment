@@ -15,15 +15,23 @@ import React, { useState } from "react";
 import { AiOutlineHeart,AiFillHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
+// BlogCard component is containing single blog card.
+// I am maping this component on homepage with dynamic data. 
 
 const BlogCard = ({blogData,handleComment,removeBTN,triger}) => {
 
     const {userId,id,title,body} = blogData
     const [toggle,setToggle] = useState(false)
 const toast = useToast()
+
+// I am storing two array in localstorage. one is containing all blog data.
+// second is containing only id of blogs.
+
 let favBlogs = JSON.parse(localStorage.getItem("blogs"))||[]
 let favBlogsIDs = JSON.parse(localStorage.getItem("blogsIDs"))||[]
 
+// This function is adding blog to favorites.
+// For this i am adding particular blog object to localstorage then re-rendering the component.
 const handleFav=()=>{
     if(favBlogsIDs.includes(id)){
         toast({
@@ -42,6 +50,9 @@ const handleFav=()=>{
         setToggle(!toggle)
     }
 }
+
+// This function is removing blog form favorites.
+
    const handleRemove =()=>{
     favBlogs = favBlogs.filter((e)=> e.id !== id)
     favBlogsIDs = favBlogs.filter((e)=> e !== id)
@@ -51,6 +62,7 @@ const handleFav=()=>{
     triger()
    }
 
+   // This function is sending data to single blog page.
    const sendData=()=>{
      localStorage.setItem("blogdata",JSON.stringify({title,body}))
    }
@@ -82,6 +94,7 @@ const handleFav=()=>{
         <Text fontSize={"2em"} noOfLines={2}>{body}</Text>
         <HStack w="100%" justifyContent={"space-between"}>
          <Button bgColor="blue.400" color="white" onClick={()=> handleComment(id)}>Comments</Button>
+       
         <Link style={{width:"50%"}} to={`/${userId}`}> <Button  bgColor="tomato" color="white" w="100%" align="right" _hover={{color:"tomato",bgColor:"red.100"}} onClick={sendData}>READ MORE</Button></Link>
        {removeBTN?  <Button  bgColor="tomato" color="white" w="20%" align="right" _hover={{color:"tomato",bgColor:"red.100"}} onClick={handleRemove}>REMOVE</Button>:""}
         </HStack>
