@@ -62,11 +62,11 @@ const Homepage = () => {
    
    
   return (
-    <Box   pb='20px' bgImage={"https://th.bing.com/th/id/OIP.6ykS3FYVcGPPhx_svLZtIgHaEK?pid=ImgDet&rs=1"} bgSize={"cover"} bgAttachment={"fixed"}>
+    <Box   pb='20px' >
     <Heading textAlign={"center"} color="blue.700">Latest Blogs</Heading>
 
     {/* here i added one loader which will be shown if data will take time to fetch from server */}
-     {loader? <Box m="auto" w="10vw" mt="30px"><Spinner size={"xl"} /> <Text fontSize={"1.5em"}>Loading...</Text> </Box>:""}
+     {loader? <Box m="auto" w={{base:"50vw",md:"20vw",lg:"10vw"}} mt="30px"><Spinner size={"xl"} /> <Text fontSize={"1.5em"}>Loading...</Text> </Box>:""}
    {/*  here I am mapping all the blogcards */}
     <VStack gap={8} m="auto" w={{base:"98vw",md:'95vw',lg:"50vw"}} mt="3vh">
     {allBlogs.length>0 && allBlogs.filter((e,i)=> i+1>=(activePage-1)*10+1 && i+1<=(activePage)*10).map((e)=> <BlogCard key={e.id} blogData={e} handleComment={(id)=> handleComments(id)} removeBTN={false}/>)}
@@ -78,7 +78,7 @@ const Homepage = () => {
     {page.length>0 && page.map((e,i)=>  <Pagination key={i} page={i+1} handlePage={(val)=> setActivePage(val)} active={activePage}/>)}
     </HStack>
     {/*  this is scroll to top button */}
-     <Icon as={BiUpArrowAlt}  bgColor={"tomato"} color="white" w="5vw" h="10vh" borderRadius={"50%"} pos="fixed" bottom={"5vh"} right={"3vw"} cursor={"pointer"} onClick={()=> window.scrollTo({top:0,behavior:"smooth"})}></Icon> 
+     <Icon as={BiUpArrowAlt}  bgColor={"tomato"} color="white" w={{base:"13vw",md:"8vw",lg:"5vw"}} h="10vh" borderRadius={"50%"} pos="fixed" bottom={"5vh"} right={"3vw"} cursor={"pointer"} onClick={()=> window.scrollTo({top:0,behavior:"smooth"})}></Icon> 
     
     {/*  this is a drawer. it is showing all comments */}
     <Drawer placement={"right"}  onClose={onClose} isOpen={isOpen}>
