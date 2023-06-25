@@ -32,7 +32,14 @@ const handleChange=(e)=>{
   return (
    <>
    <HStack h="10vh" w="98vw" zIndex={1} bgColor={"#10b3ff"} m="auto" p="0px 3vw" pos={"sticky"} top="0" justifyContent={"space-between"}>
+      <Show above='850px'>
       <Link to="/"><Box fontSize={"2em"} fontWeight={"bold"}>Blog<Text as={"span"} color="yellow.100">Shlog</Text></Box></Link>
+
+      </Show>
+      <Show below='850px'>
+  <Link to="/"><Box fontSize={"2em"} fontWeight={"bold"}>B<Text as={"span"} color="yellow.100">S</Text></Box></Link>
+      </Show>
+    
        <Show above='850px'>
        <HStack w="50%" justifyContent={"space-between"}>
        <Input w="50%" placeholder='Search' bgColor={"white"} onChange={handleChange}></Input>
@@ -41,7 +48,7 @@ const handleChange=(e)=>{
        </HStack>
        </Show>
        <Show below='850px'>
-       <HStack w="50%" justifyContent={"space-between"}>
+       <HStack w="80%" justifyContent={"space-between"}>
        <Input w="80%" placeholder='Search' bgColor={"white"} onChange={handleChange}></Input>
        <Link style={{width:"20%"}} to='/favorites'><Icon as={AiFillHeart} boxSize={"50px"} color="red.400"></Icon></Link> 
        </HStack>

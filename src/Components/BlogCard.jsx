@@ -8,6 +8,7 @@ import {
   Icon,
   Image,
   Text,
+ 
   VStack,
   useToast,
 } from "@chakra-ui/react";
@@ -100,7 +101,9 @@ const handleFav=()=>{
             <Avatar src='https://www.pngarts.com/files/3/Avatar-Transparent-Image.png' />
           </Box>
           <Box>
+           
             <Icon as={favBlogsIDs.includes(id)?  AiFillHeart : AiOutlineHeart } boxSize={"50px"} color="red.400" onClick={handleFav} />
+         
           </Box>
         </HStack>
 
