@@ -62,7 +62,7 @@ const Homepage = () => {
    
    
   return (
-    <Box   pb='20px' >
+    <Box   pb='20px' minH={"80vh"} >
     <Heading textAlign={"center"} color="blue.700">Latest Blogs</Heading>
 
     {/* here i added one loader which will be shown if data will take time to fetch from server */}

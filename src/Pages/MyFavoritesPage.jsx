@@ -34,7 +34,7 @@ const MyFavoritesPage = () => {
   return (
    <>
    <Heading textAlign={"center"} color={"red.400"}>MY FAVORITES</Heading>
-   <VStack gap={8} m="auto" w={{base:"98vw",md:'95vw',lg:"50vw"}} mt="30px">
+   <VStack gap={8} m="auto" w={{base:"98vw",md:'95vw',lg:"50vw"}} mt="30px" minH={"80vh"}>
     {allFavBlogs.length>0 && allFavBlogs.map((e)=> <BlogCard key={e.id} blogData={e} handleComment={(id)=> handleComments(id)} removeBTN={true} triger={()=> setTriger(!triger)}/>)}
     </VStack>
 
